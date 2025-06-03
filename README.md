@@ -48,19 +48,31 @@ Bash
 pip install -r requirements.txt
 
 
-Set Environment Variables: Linux/macOS (in your active terminal session):Bash
+# Set Environment Variables: 
+# Linux/macOS (in your active terminal session):Bash
 export DD_SERVICE="my-fastapi-app-service"
 export DD_ENV="development"
 export DD_VERSION="1.0.0"
 export DD_LOGS_INJECTION=true
 export LOG_LEVEL="DEBUG" # Set to DEBUG to see all log messages, including debug ones
 
-Windows (Command Prompt):DOS
+# Windows (Command Prompt):DOS
 set DD_SERVICE=my-fastapi-app-service
 set DD_ENV=development
 set DD_VERSION=1.0.0
 set DD_LOGS_INJECTION=true
 set LOG_LEVEL=DEBUG
+
+# EKS
+        env:
+        - name: DD_SERVICE
+          value: "my-fastapi-app"
+        - name: DD_ENV
+          value: "production"
+        - name: DD_VERSION
+          value: "1.0.0"
+        - name: DD_LOGS_INJECTION
+          value: "true" 
 
 If you chose to use python-dotenv and a .env file, you would put these variables in .env and include load_dotenv() at the very top of main.py.
 Run your FastAPI application:
